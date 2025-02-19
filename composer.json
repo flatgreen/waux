@@ -1,7 +1,7 @@
 {
     "name": "flatgreen/waux",
     "description": "Try to extract media (audio) information from the web",
-    "keywords": ["scraping, audio"],
+    "keywords": ["scraping", "audio"],
     "type": "library",
     "require": {
         "php": ">=8.1",

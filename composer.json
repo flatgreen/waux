@@ -1,6 +1,7 @@
 {
     "name": "flatgreen/waux",
-    "description": "Try to extract media (audio) information form the web",
+    "description": "Try to extract media (audio) information from the web",
+    "keywords": "scraping, audio",
     "type": "library",
     "require": {
         "php": ">=8.1",
@@ -10,6 +11,7 @@
         "symfony/css-selector": "^6.4|^7.0",
         "flatgreen/rfrance": "^2.1"
     },
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Flatgreen\\WebMediaExtract\\": "src/",

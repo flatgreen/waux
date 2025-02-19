@@ -1,0 +1,8 @@
+cache/
+trav/
+vendor/
+tests/
+.vscode/
+doc.txt
+composer.lock
+index.php

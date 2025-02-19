@@ -1,0 +1,19 @@
+abstract class MediaAbstract
+{
+    // $id est important dans le cas d'une playlist (dans 'yadpod' en tout cas)
+    public ?string $id = null;
+    public ?string $title = null;
+    public ?string $webpage_url = null;
+    public ?string $original_url = null;
+    public ?string $description = null;
+    public ?string $mimetype = null;
+    public ?string $url = null;
+    public ?int $filesize = 0;
+    public ?int $timestamp = 0;
+    public ?string $ext = null;
+    public ?string $thumbnail = null;
+    public ?string $_filename = null;
+    public ?int $duration = null;
+    public ?string $playlist = null;
+    public ?string $uploader = null;
+}

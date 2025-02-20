@@ -16,11 +16,6 @@ use Symfony\Component\DomCrawler\Crawler;
 class UrlPreview
 {
     private EventDispatcher $eventDispatcher;
-    // private array $headers = [
-    //     'HTTP_ACCEPT'		=>	'text/html,application/xhtml+xml,application/xml;q=0.9',
-    //     'HTTP_USER_AGENT'	=>	'Mozilla/5.0 (compatible; PageMeta/1.0; +https://layered.dev)'
-    // ];
-
     protected Crawler $crawler;
     protected HttpClient $client;
     /** @var mixed[] $data */

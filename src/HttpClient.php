@@ -15,7 +15,6 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 class HttpClient
 {
     private FilesystemAdapter $cache;
-
     public string $html;
     /** @var string[] $http_options */
     public array $http_options;
@@ -39,8 +38,8 @@ class HttpClient
         $this->cache = new FilesystemAdapter('webmediaextract', $cache_duration, $cache_directory);
 
         $this->http_options = array_merge([
-            'method' => 'GET',
-            'user_agent' => 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+            // 'user_agent' => 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+            'user_agent' => 'Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/124.0',
         ], $http_options);
     }
 
@@ -51,6 +50,10 @@ class HttpClient
      */
     public function get(string $url): string
     {
+        $this->http_options = array_merge(
+            $this->http_options,
+            ['method' => 'GET']
+        );
         return $this->cacheRequest($url, $this->http_options);
     }
 

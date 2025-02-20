@@ -14,7 +14,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Flatgreen\\WebMediaExtract\\": "src/",
+            "Flatgreen\\Waux\\": "src/",
             "Layered\\PageMeta\\": "src/"
         },
         "files": [
@@ -26,6 +26,6 @@
         "symfony/var-dumper": "^7.2"
     },
     "scripts": {
-        "phpstan": "phpstan analyse --level 7 src/"
+        "phpstan": "phpstan analyse --level 7 *.php src/"
     }
 }

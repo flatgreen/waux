@@ -77,6 +77,7 @@ class HtmlMedia extends ExtractorAbstract implements ExtractorInterface
             'webpage_url' => $this->webpage_url,
             'thumbnail' => $one_media['thumbnail'],
             'url' => $one_media['url'],
+            'id' => md5($one_media['url'])
         ];
     }
 

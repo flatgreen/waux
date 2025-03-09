@@ -11,6 +11,8 @@ class Waux
     /** @var string[] $list_ie */
     private $list_ie = [];
     private UrlPreview $preview;
+    /** @var mixed[] $parameters */
+    private array $parameters = [];
     private string $extractor = ''; // vraiment ?
 
     /**
@@ -57,6 +59,15 @@ class Waux
     }
 
     /**
+     * @param mixed[] $parameters
+     */
+    public function setParameters(array $parameters): self
+    {
+        $this->parameters = $parameters;
+        return $this;
+    }
+
+    /**
      * Use UrlPreview with local extractor (if necessary)
      *
      * @param string $url
@@ -78,7 +89,7 @@ class Waux
             $this->preview->addListener('page.scrape', $html_media);
         }
 
-        $this->preview->loadUrl($url);
+        $this->preview->loadUrl($url, $this->parameters);
         return $this;
     }
 

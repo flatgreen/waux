@@ -50,7 +50,10 @@ class UrlPreview
         $this->addListener('data.filter', ['\Layered\PageMeta\Scraper\SiteInfo', 'relativUrlToAbsolute']);
     }
 
-    public function loadUrl(string $url): self
+    /**
+     * @param mixed[] $parameters
+     */
+    public function loadUrl(string $url, array $parameters = []): self
     {
         $this->data = [
             'site'		=>	[
@@ -86,7 +89,7 @@ class UrlPreview
             $this->crawler = new Crawler($this->client->get($url), $url);
 
             // start scraping page
-            $pageScrapeEvent = new PageScrapeEvent($this->data, $this->crawler, $this->client);
+            $pageScrapeEvent = new PageScrapeEvent($this->data, $this->crawler, $this->client, $parameters);
             $this->data = $this->eventDispatcher->dispatch($pageScrapeEvent, PageScrapeEvent::NAME)->getData();
 
         } catch (\Throwable $th) {

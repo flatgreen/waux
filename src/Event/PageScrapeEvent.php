@@ -17,15 +17,19 @@ class PageScrapeEvent extends Event
     protected array $data;
     protected Crawler $crawler;
     protected HttpClient $client;
+    /** @var mixed[] $parameters */
+    protected array $parameters;
 
     /**
      * @param mixed[] $data
+     * @param mixed[] $parameters
      */
-    public function __construct(array $data, Crawler $crawler, HttpClient $client)
+    public function __construct(array $data, Crawler $crawler, HttpClient $client, array $parameters)
     {
         $this->data = $data;
         $this->crawler = $crawler;
         $this->client = $client;
+        $this->parameters = $parameters;
     }
 
     /**
@@ -60,6 +64,14 @@ class PageScrapeEvent extends Event
     public function getClient(): HttpClient
     {
         return $this->client;
+    }
+
+    /**
+     * @return mixed[]
+     */
+    public function getParameters(): array
+    {
+        return $this->parameters;
     }
 
 }

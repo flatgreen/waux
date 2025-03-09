@@ -60,3 +60,16 @@ function url_to_title(string $url): string
     $name = str_replace(['_', '.', '-'], ' ', $name);
     return $name;
 }
+
+/**
+ * from 'P0Y0M0DT0H54M38S' to second
+ *
+ * @param string $duration_iso
+ * @return integer
+ */
+function duration_ISO_to_timestamp(string $duration_iso): int
+{
+    $duration_date = new \DateInterval($duration_iso);
+    $duration = date_create('@0')->add($duration_date)->getTimestamp();
+    return $duration;
+}

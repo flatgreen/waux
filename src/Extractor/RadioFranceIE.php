@@ -8,6 +8,8 @@ use Layered\PageMeta\Event\PageScrapeEvent;
 /**
  * Scrape R a  d i o f r a n c e with Flatgreen\RFrance,
  * one item or playlist (serie and emission)
+ *
+ * parameters: ['RadioFrance']['max_items'], int, default -1
  */
 class RadioFranceIE extends ExtractorAbstract implements ExtractorInterface
 {
@@ -22,9 +24,11 @@ class RadioFranceIE extends ExtractorAbstract implements ExtractorInterface
         $crawler = $event->getCrawler();
         $cache_options = $event->getClient()->cache_options;
 
+        $max_item = ($event->getParameters()[self::EXTRACTOR_NAME]['max_items']) ?? -1;
+
         $FC = new RFrance($cache_options['cache_directory'], $cache_options['cache_duration']);
         $FC->setCrawler($crawler);
-        $ret = $FC->extract($webpage_url);
+        $ret = $FC->extract($webpage_url, $max_item);
 
         if (!empty($FC->error) || $ret === false) {
             throw new \Exception($FC->error);

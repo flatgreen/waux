@@ -25,7 +25,7 @@ class HtmlMedia extends ExtractorAbstract implements ExtractorInterface
         $current_scraped_data = $event->getData();
         $this->webpage_url = $current_scraped_data['page']['url'];
         $title = ($current_scraped_data['page']['title']) ?? '';
-        $thumbnail = ($current_scraped_data['page']['image']) ?? ($current_scraped_data['site']['icon']) ?? null;
+        $thumbnail = ($current_scraped_data['page']['image']['url']) ?? ($current_scraped_data['site']['icon']) ?? null;
 
         $all_media = [];
         foreach(['audio', 'video'] as $media_type) {

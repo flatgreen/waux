@@ -14,7 +14,8 @@ use Layered\PageMeta\Event\PageScrapeEvent;
 class RadioFranceIE extends ExtractorAbstract implements ExtractorInterface
 {
     public const EXTRACTOR_NAME = 'RadioFrance';
-    public const VALID_URL_REGEXP = '/^https:\/\/www\.radiofrance\.fr\/.+\/podcasts/';
+    public const VALID_URL_REGEXP = '/^https:\/\/www\.radiofrance\.fr\//';
+    // public const VALID_URL_REGEXP = '/^https:\/\/www\.radiofrance\.fr\/.+\/podcasts/';
     public const MAJ = '2025-02-16';
 
     public function __invoke(PageScrapeEvent $event): void

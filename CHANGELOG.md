@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.3.2] 2025-03-24
+### Fixed
+- fix RF extractor with type NewsArticle
+
 ## [1.3.1] 2025-03-14
 ### Fixed
 - fix HtmlMedia thumbnail extractor

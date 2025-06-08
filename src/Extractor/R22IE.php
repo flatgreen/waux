@@ -15,7 +15,7 @@ class R22IE extends ExtractorAbstract implements ExtractorInterface
     public const EXTRACTOR_NAME = 'R22';
     public const VALID_URL_REGEXP = '/^https:\/\/www\.r22\.fr\/antennes\//';
     public const R22_CAPSULES_POST_URL = 'https://www.r22.fr/capsules';
-    public const MAJ = '2025-02-15';
+    public const MAJ = '2025-06-08';
 
     public function __invoke(PageScrapeEvent $event): void
     {
@@ -29,11 +29,11 @@ class R22IE extends ExtractorAbstract implements ExtractorInterface
         if (null !== $result) {
             // search items with webpage_url
             $all_songs = array_filter($result['songs'], function ($item) use ($webpage_url) {
-                return $item['pageUrl'] === $webpage_url;
+                return str_contains($item['pageUrl'], $webpage_url);
             });
             // only one playlist par page (if one !)
             $a_playlist = array_filter($result['playlists'], function ($item) use ($webpage_url) {
-                return $item['PageUrl'] === $webpage_url;
+                return str_contains($item['PageUrl'], $webpage_url);
             });
             $a_playlist = reset($a_playlist);
 

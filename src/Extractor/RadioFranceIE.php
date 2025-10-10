@@ -15,8 +15,7 @@ class RadioFranceIE extends ExtractorAbstract implements ExtractorInterface
 {
     public const EXTRACTOR_NAME = 'RadioFrance';
     public const VALID_URL_REGEXP = '/^https:\/\/www\.radiofrance\.fr\//';
-    // public const VALID_URL_REGEXP = '/^https:\/\/www\.radiofrance\.fr\/.+\/podcasts/';
-    public const MAJ = '2025-02-16';
+    public const MAJ = '2025-10-12';
 
     public function __invoke(PageScrapeEvent $event): void
     {
@@ -28,7 +27,7 @@ class RadioFranceIE extends ExtractorAbstract implements ExtractorInterface
         $max_item = ($event->getParameters()[self::EXTRACTOR_NAME]['max_items']) ?? -1;
 
         $FC = new RFrance($cache_options['cache_directory'], $cache_options['cache_duration']);
-        $FC->setCrawler($crawler);
+        $FC->setHtml($crawler->html());
         $ret = $FC->extract($webpage_url, $max_item);
 
         if (!empty($FC->error) || $ret === false) {

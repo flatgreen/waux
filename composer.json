@@ -9,7 +9,7 @@
         "symfony/cache": "^6.4|^7.0",
         "symfony/dom-crawler": "^6.4|^7.0",
         "symfony/css-selector": "^6.4|^7.0",
-        "flatgreen/rfrance": "^2.1"
+        "flatgreen/rfrance": "^2.5"
     },
     "license": "MIT",
     "autoload": {

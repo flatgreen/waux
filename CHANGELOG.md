@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
+## [1.4.1] 2025-11-12
+### Fixed
+- RtsAudioIE, change on the web site
+- compatibility with php8.4
+### Changed
+- phpstan level 8
+
 ## [1.4] 2025-10-12
 ### Added
 - new extractor for audioblog.arteradiocom one item only

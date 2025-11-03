@@ -51,7 +51,7 @@ class SiteInfo
     {
         $crawler = $event->getCrawler();
         $data = $event->getData();
-        $parsedUrl = parse_url($crawler->getUri());
+        $parsedUrl = parse_url($crawler->getUri() ?? '');
 
         if (empty($data['site']['name']) && !isset($parsedUrl['query']) && !isset($parsedUrl['path'])) {
             $event->addData('site', [
@@ -78,13 +78,13 @@ class SiteInfo
     public static function relativUrlToAbsolute(DataFilterEvent $event): void
     {
         $data = $event->getData();
-        foreach(['thumbnail', 'icon'] as $field) {
+        foreach (['thumbnail', 'icon'] as $field) {
             if (isset($data[$field])) {
                 $data[$field] = UriResolver::resolve($data[$field], $event->getCrawler()->getUri());
                 $event->setData($data);
             }
             if (isset($data['_type']) && $data['_type'] == 'playlist') {
-                foreach($data['entries'] as $k => $v) {
+                foreach ($data['entries'] as $k => $v) {
                     if (isset($data['entries'][$k][$field])) {
                         $data['entries'][$k][$field] = UriResolver::resolve($data['entries'][$k][$field], $event->getCrawler()->getUri());
                     }

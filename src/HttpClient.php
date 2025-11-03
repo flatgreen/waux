@@ -80,7 +80,7 @@ class HttpClient
             return $content;
         });
         if ($content === false) {
-            throw new \Exception('HTTP request failed. Error: ' . error_get_last()['message']);
+            throw new \Exception('HTTP request failed. Error: ' . (error_get_last()['message'] ?? 'no content'));
         }
         return $content;
     }

@@ -3,7 +3,6 @@
 namespace Layered\PageMeta\Scraper;
 
 use Layered\PageMeta\Event\PageScrapeEvent;
-use Symfony\Component\DomCrawler\UriResolver;
 
 /**
  * Scrape data available in meta tags
@@ -17,7 +16,7 @@ class SimpleHtml
         if (count($crawler->filter('title'))) {
             $site = [
                 'icon'			=>	[],
-                'language'		=>	current(explode('-', trim($crawler->filter('html')->attr('lang')))),
+                'language'		=>	current(explode('-', trim($crawler->filter('html')->attr('lang') ?? ''))),
                 'author'		=>	'',
                 'generator'		=>	'',
                 'theme-color'	=>	''
@@ -35,7 +34,7 @@ class SimpleHtml
 
             $crawler->filter('meta[name]')->each(function ($node) use (&$site, &$page, &$extra) {
                 $metaName = strtolower($node->attr('name'));
-                $content = trim($node->attr('content'));
+                $content = trim($node->attr('content') ?? '');
 
                 if (isset($site[$metaName]) && !empty($content)) {
                     $site[$metaName] = $content;

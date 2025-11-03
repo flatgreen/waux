@@ -98,7 +98,7 @@ class R22IE extends ExtractorAbstract implements ExtractorInterface
     {
         try {
             $time_tag = $crawler->filter('time')->eq(0);
-            $time_attr = $time_tag->attr('datetime');
+            $time_attr = $time_tag->attr('datetime') ?? date('Y-m-d');
             $fr_month = explode(' ', trim($time_tag->text()))[0];
             $rep = preg_match('/(\d{4})-m-(\d{2})/', $time_attr, $matches);
             $jour = $matches[2] ?? '';
